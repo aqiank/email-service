@@ -3,6 +3,7 @@ package main
 import (
     "flag"
     "fmt"
+    "log"
     "net/http"
     "os"
 
@@ -50,6 +51,7 @@ func mailHandler(w http.ResponseWriter, r *http.Request) {
 
             message := mailgun.NewMessage(from, subject, text, to...)
             if _, _, err := mg.Send(message); err != nil {
+                log.Println(err)
                 w.WriteHeader(http.StatusInternalServerError)
                 return
             }
