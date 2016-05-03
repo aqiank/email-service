@@ -2,6 +2,7 @@ package main
 
 import (
     "flag"
+    "fmt"
     "net/http"
     "os"
 
@@ -72,6 +73,8 @@ func main() {
     port := flag.String("port", "8080", "server port")
 
     flag.Parse()
+
+    fmt.Println("Whitelist:", *whitelist)
 
     n := negroni.New(negroni.NewRecovery(), negroni.NewLogger())
     n.UseHandlerFunc(mailHandler)
