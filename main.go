@@ -65,7 +65,7 @@ func mailHandler(w http.ResponseWriter, r *http.Request) {
 func init() {
     domain := os.Getenv("DOMAIN")
     apiKey := os.Getenv("API_KEY")
-    publicAPIKey := os.Getenv("PUBLIC_KEY")
+    publicAPIKey := os.Getenv("PUBLIC_API_KEY")
     mg = mailgun.NewMailgun(domain, apiKey, publicAPIKey)
 }
 
