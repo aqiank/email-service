@@ -11,9 +11,13 @@ import (
 
 var mg mailgun.Mailgun
 
+var whitelist = flag.String("whitelist", "*", "domain allowed to make request")
+
 func mailHandler(w http.ResponseWriter, r *http.Request) {
     switch r.Method {
     case "POST":
+        w.Header().Set("Access-Control-Allow-Origin", *whitelist)
+
         from := r.FormValue("from")
         if from == "" {
             w.WriteHeader(http.StatusBadRequest)
