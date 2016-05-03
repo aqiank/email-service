@@ -24,7 +24,7 @@ func mailHandler(w http.ResponseWriter, r *http.Request) {
             return
         }
 
-        subject := r.FormValue("text")
+        subject := r.FormValue("subject")
         if subject == "" {
             w.WriteHeader(http.StatusBadRequest)
             return
